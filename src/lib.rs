@@ -1,4 +1,5 @@
 pub mod stack;
+pub mod tree;
 
 #[cfg(test)]
 mod tests {
