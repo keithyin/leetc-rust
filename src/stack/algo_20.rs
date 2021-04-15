@@ -9,7 +9,8 @@ fn valid_bracket(brackets: &String) -> bool{
                     if let Some(top) = stack.get(stack.len() - 1) {
                         let item_ascii = item.to_string().as_bytes()[0];
                         let top_ascii = (*top).to_string().as_bytes()[0];
-                        if (item_ascii as i32 - top_ascii as i32) > 1 {
+                        let residual = item_ascii as i32 - top_ascii as i32;
+                        if residual == 1 || residual == 2 {
                             stack.pop();
                         } else {
                             return false;
@@ -37,6 +38,7 @@ mod test {
         let mut brackets= String::from("((()))}");
         assert!(!valid_bracket(&brackets));
         brackets = String::from("((()))");
-        assert!(valid_bracket(&brackets));
+        let is_valid = valid_bracket(&brackets);
+        assert!(is_valid);
     }
 }

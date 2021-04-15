@@ -3,9 +3,6 @@ fn catch_rain_brute_force(heights: &Vec<u32>) -> u32 {
     if len < 1 {
         return 0;
     }
-    for i in 1..len {
-        
-    }
     return 0;
 }
 

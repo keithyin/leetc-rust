@@ -1,7 +1,6 @@
 // Definition for a binary tree node.
 use std::rc::Rc;
 use std::cell::RefCell;
-use std::borrow::Borrow;
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
@@ -51,17 +50,35 @@ fn inorder_traverse_stack(mut root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
     if let Some(ref node) = root {
         stack.push(Rc::clone(node));
     }
-    while stack.len() > 0 {
+    while stack.len() > 0 || root != None {
+        while root != None {
+            let mut next_root = None;
+            if let Some(ref node) = root {
+                if let Some(ref child) = node.as_ref().borrow().left {
+                    next_root = Some(Rc::clone(child));
+                    stack.push(Rc::clone(child));
+                }
+            }
+            root = next_root;
+        }
+
+        if let Some(val) = stack.pop() {
+            res.push(val.as_ref().borrow().val);
+            if let Some(ref val) = val.as_ref().borrow().right {
+                root = Some(Rc::clone(val));
+                stack.push(Rc::clone(val));
+            } else {
+                root = None;
+            }
+        };
 
     }
-    while let Some(ref node) = root {
-        if let Some(ref node) = node.as_ref().borrow().left {
-            stack.push(Rc::clone(node));
-        } else {
-            res.push(node.as_ref().borrow().val);
-        }
-    }
-    return vec![1, 2];
+    return res;
+}
+
+
+fn moris() {
+
 }
 
 #[cfg(test)]
@@ -70,14 +87,14 @@ mod test {
 
     #[test]
     fn test_rc() {
-        let mut a = Rc::new(RefCell::new(3));
-        let mut b = a.clone();
+        let a = Rc::new(RefCell::new(3));
+        let b = a.clone();
         println!("{:?}, {:?}", a, b);
         *(a.borrow_mut()) = 10;
         println!("{:?}, {:?}", a, b);
     }
 
-    fn get_tree() -> Option<Rc<RefCell<TreeNode>>>{
+    fn get_tree() -> Option<Rc<RefCell<TreeNode>>> {
         let mut tree = TreeNode::new(10);
         tree.left = Some(Rc::new(RefCell::new(TreeNode::new(32))));
         tree.right = Some(Rc::new(RefCell::new(TreeNode::new(11))));
@@ -88,6 +105,13 @@ mod test {
     fn test_inorder_traverse() {
         let tree = get_tree();
         let inorder_res = inorder_traversal(tree);
+        assert_eq!(inorder_res, vec![32, 10, 11]);
+    }
+
+    #[test]
+    fn test_inorder_traverse_stack() {
+        let tree = get_tree();
+        let inorder_res = inorder_traverse_stack(tree);
         assert_eq!(inorder_res, vec![32, 10, 11]);
     }
 }
