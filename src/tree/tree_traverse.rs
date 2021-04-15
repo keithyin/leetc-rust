@@ -1,7 +1,6 @@
 // Definition for a binary tree node.
 use std::rc::Rc;
 use std::cell::RefCell;
-use std::borrow::Borrow;
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
@@ -120,6 +119,19 @@ fn preorder_stack(mut root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
     return result;
 }
 
+fn postorder_traverse(root: &Option<Rc<RefCell<TreeNode>>>) -> Vec<i32>{
+    let mut trace: Vec<i32> = Vec::new();
+    postorder_traverse_core(root, &mut trace);
+    return trace;
+}
+
+fn postorder_traverse_core(root: &Option<Rc<RefCell<TreeNode>>>, trace: &mut Vec<i32>) {
+    if let Some(node) = root {
+        postorder_traverse_core(&node.as_ref().borrow().left, trace);
+        postorder_traverse_core(&node.as_ref().borrow().right, trace);
+        trace.push(node.as_ref().borrow().val);
+    }
+}
 
 #[cfg(test)]
 mod test {
@@ -130,8 +142,15 @@ mod test {
         let a = Rc::new(RefCell::new(3));
         let b = a.clone();
         println!("{:?}, {:?}", a, b);
-        *(a.borrow_mut()) = 10;
+        *(a.as_ref().borrow_mut()) = 10;
         println!("{:?}, {:?}", a, b);
+
+        let tree = get_tree();
+        let mut stack: Vec<&Option<Rc<RefCell<TreeNode>>>> = Vec::new();
+        if let Some(ref node) = tree {
+            stack.push(&node.as_ref().borrow().left);
+        }
+
     }
 
     fn get_tree() -> Option<Rc<RefCell<TreeNode>>> {
@@ -170,5 +189,12 @@ mod test {
         let tree = get_tree();
         let preorder_res = preorder_stack(tree);
         assert_eq!(preorder_res, vec![10, 32, 9, 11]);
+    }
+
+    #[test]
+    fn test_postorder_traverse() {
+        let tree = get_tree();
+        let postorder_res = postorder_traverse(&tree);
+        assert_eq!(postorder_res, vec![9, 32, 11, 10]);
     }
 }
