@@ -48,6 +48,12 @@ fn inorder_traversal_core(root: &Option<Rc<RefCell<TreeNode>>>, trace: &mut Vec<
 fn inorder_traverse_stack(mut root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
     let mut stack: Vec<Rc<RefCell<TreeNode>>> = Vec::new();
     let mut res: Vec<i32> = Vec::new();
+    if let Some(ref node) = root {
+        stack.push(Rc::clone(node));
+    }
+    while stack.len() > 0 {
+
+    }
     while let Some(ref node) = root {
         if let Some(ref node) = node.as_ref().borrow().left {
             stack.push(Rc::clone(node));
