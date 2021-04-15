@@ -4,11 +4,7 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb81de60-269c-4587-9354-51ab89e1a14e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/stack.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/stack/algo_20.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/stack/algo_42.rs" afterDir="false" />
-    </list>
+    <list default="true" id="fb81de60-269c-4587-9354-51ab89e1a14e" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -92,6 +88,7 @@
   </component>
   <component name="RustProjectSettings">
     <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
+    <option name="version" value="2" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -114,5 +111,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
