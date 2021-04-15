@@ -1,6 +1,7 @@
 // Definition for a binary tree node.
 use std::rc::Rc;
 use std::cell::RefCell;
+use std::borrow::Borrow;
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
@@ -77,6 +78,48 @@ fn inorder_traverse_stack(mut root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
 }
 
 
+fn preorder_traverse(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32>{
+    let mut trace:Vec<i32> = Vec::new();
+    preorder_traverse_core(&root, &mut trace);
+    return trace;
+}
+
+fn preorder_traverse_core(root: &Option<Rc<RefCell<TreeNode>>>, trace: &mut Vec<i32>) {
+    if let Some(node) = root {
+        trace.push(node.as_ref().borrow().val);
+        preorder_traverse_core(&node.as_ref().borrow().left, trace);
+        preorder_traverse_core(&node.as_ref().borrow().right, trace);
+    }
+}
+
+fn preorder_stack(mut root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
+    let mut stack: Vec<Rc<RefCell<TreeNode>>> = Vec::new();
+    let mut result: Vec<i32> = Vec::new();
+    while stack.len() > 0 || root != None {
+        while root != None {
+            let mut next_root = None;
+            if let Some(ref node) = root {
+                result.push(node.as_ref().borrow().val);
+                stack.push(Rc::clone(node));
+                if let Some(ref node) = node.as_ref().borrow().left {
+                    next_root = Some(Rc::clone(node));
+                } else {
+                    next_root = None;
+                }
+            }
+            root = next_root;
+        }
+        if let Some(node) = stack.pop() {
+            if let Some(ref node) = node.as_ref().borrow().right {
+                root = Some(Rc::clone(node));
+            } else {
+                root = None;
+            }
+        }
+    }
+    return result;
+}
+
 
 #[cfg(test)]
 mod test {
@@ -95,6 +138,9 @@ mod test {
         let mut tree = TreeNode::new(10);
         tree.left = Some(Rc::new(RefCell::new(TreeNode::new(32))));
         tree.right = Some(Rc::new(RefCell::new(TreeNode::new(11))));
+        if let Some(ref node) = tree.left {
+            node.as_ref().borrow_mut().right = Some(Rc::new(RefCell::new(TreeNode::new(9))));
+        }
         Some(Rc::new(RefCell::new(tree)))
     }
 
@@ -102,13 +148,27 @@ mod test {
     fn test_inorder_traverse() {
         let tree = get_tree();
         let inorder_res = inorder_traversal(tree);
-        assert_eq!(inorder_res, vec![32, 10, 11]);
+        assert_eq!(inorder_res, vec![32, 9, 10, 11]);
     }
 
     #[test]
     fn test_inorder_traverse_stack() {
         let tree = get_tree();
         let inorder_res = inorder_traverse_stack(tree);
-        assert_eq!(inorder_res, vec![32, 10, 11]);
+        assert_eq!(inorder_res, vec![32, 9, 10, 11]);
+    }
+
+    #[test]
+    fn test_preorder_traverse() {
+        let tree = get_tree();
+        let preorder_res = preorder_traverse(tree);
+        assert_eq!(preorder_res, vec![10, 32, 9, 11]);
+    }
+
+    #[test]
+    fn test_preorder_traverse_stack() {
+        let tree = get_tree();
+        let preorder_res = preorder_stack(tree);
+        assert_eq!(preorder_res, vec![10, 32, 9, 11]);
     }
 }
