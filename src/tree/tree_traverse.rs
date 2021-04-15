@@ -70,16 +70,13 @@ fn inorder_traverse_stack(mut root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
             } else {
                 root = None;
             }
-        };
+        }
 
     }
     return res;
 }
 
 
-fn moris() {
-
-}
 
 #[cfg(test)]
 mod test {
