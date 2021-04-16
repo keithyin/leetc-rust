@@ -133,9 +133,50 @@ fn postorder_traverse_core(root: &Option<Rc<RefCell<TreeNode>>>, trace: &mut Vec
     }
 }
 
+fn postorder_traverse_stack(mut root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32>{
+    let mut stack: Vec<Rc<RefCell<TreeNode>>> = Vec::new();
+    let mut result: Vec<i32> = Vec::new();
+    let mut prev = Rc::new(RefCell::new(TreeNode::new(0)));
+    while stack.len()>0 || root != None {
+        // println!("---{:?}---", stack);
+        while root != None {
+            let mut next_root: Option<Rc<RefCell<TreeNode>>> = None;
+            if let Some(ref node) = root {
+                stack.push(Rc::clone(node));
+                if let Some(ref node) = node.as_ref().borrow().left {
+                    next_root = Some(Rc::clone(node));
+                } else {
+                    next_root = None;
+                }
+            }
+            root = next_root;
+
+        }
+        let top = Rc::clone(&stack[stack.len()-1]);
+
+        if let Some(ref node) = top.as_ref().borrow().right {
+            println!("\n---prev: {:?}, node: {:?}---", prev, node);
+            if node!= &prev {
+                root = Some(Rc::clone(node));
+            } else {
+
+                root = None;
+            }
+        } else {
+            if let Some(top) = stack.pop() {
+                result.push(top.as_ref().borrow().val);
+                prev = top;
+                root = None;
+            }
+        };
+    }
+    return result;
+}
+
 #[cfg(test)]
 mod test {
     use super::*;
+    use std::cell::Ref;
 
     #[test]
     fn test_rc() {
@@ -150,7 +191,6 @@ mod test {
         if let Some(ref node) = tree {
             stack.push(&node.as_ref().borrow().left);
         }
-
     }
 
     fn get_tree() -> Option<Rc<RefCell<TreeNode>>> {
@@ -196,5 +236,20 @@ mod test {
         let tree = get_tree();
         let postorder_res = postorder_traverse(&tree);
         assert_eq!(postorder_res, vec![9, 32, 11, 10]);
+    }
+
+    #[test]
+    fn test_postorder_traverse_stack() {
+        let tree = get_tree();
+        let postorder_res = postorder_traverse_stack(tree);
+        assert_eq!(postorder_res, vec![9, 32, 11, 10]);
+    }
+
+    #[test]
+    fn test_ref_eq() {
+        let a = Rc::new(5);
+        let b = a.clone();
+        let c = Rc::clone(&b);
+        assert_eq!(a.as_ref(), b.as_ref());
     }
 }
