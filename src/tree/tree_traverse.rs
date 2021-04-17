@@ -1,6 +1,7 @@
 // Definition for a binary tree node.
 use std::rc::Rc;
 use std::cell::RefCell;
+use std::option::Option::Some;
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
@@ -138,29 +139,27 @@ fn postorder_traverse_stack(mut root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32>
     let mut result: Vec<i32> = Vec::new();
     let mut prev = Rc::new(RefCell::new(TreeNode::new(0)));
     while stack.len()>0 || root != None {
-        // println!("---{:?}---", stack);
         while root != None {
             let mut next_root: Option<Rc<RefCell<TreeNode>>> = None;
             if let Some(ref node) = root {
                 stack.push(Rc::clone(node));
                 if let Some(ref node) = node.as_ref().borrow().left {
                     next_root = Some(Rc::clone(node));
-                } else {
-                    next_root = None;
                 }
             }
             root = next_root;
 
         }
         let top = Rc::clone(&stack[stack.len()-1]);
-
         if let Some(ref node) = top.as_ref().borrow().right {
-            println!("\n---prev: {:?}, node: {:?}---", prev, node);
-            if node!= &prev {
+            if *node != prev {
                 root = Some(Rc::clone(node));
             } else {
-
-                root = None;
+                if let Some(top) = stack.pop() {
+                    result.push(top.as_ref().borrow().val);
+                    prev = Rc::clone(&top);
+                    root = None;
+                }
             }
         } else {
             if let Some(top) = stack.pop() {
