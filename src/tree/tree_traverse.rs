@@ -2,6 +2,17 @@
 use std::rc::Rc;
 use std::cell::RefCell;
 use std::option::Option::Some;
+use std::collections::VecDeque;
+
+pub fn get_tree() -> Option<Rc<RefCell<TreeNode>>> {
+    let mut tree = TreeNode::new(10);
+    tree.left = Some(Rc::new(RefCell::new(TreeNode::new(32))));
+    tree.right = Some(Rc::new(RefCell::new(TreeNode::new(11))));
+    if let Some(ref node) = tree.left {
+        node.as_ref().borrow_mut().right = Some(Rc::new(RefCell::new(TreeNode::new(9))));
+    }
+    Some(Rc::new(RefCell::new(tree)))
+}
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
@@ -172,10 +183,30 @@ fn postorder_traverse_stack(mut root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32>
     return result;
 }
 
+pub fn layer_wise_traverse(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32>{
+    let mut deque = VecDeque::new();
+    let mut results = vec![];
+    if let Some(ref node) = root {
+        deque.push_back(Rc::clone(node));
+    }
+
+    while let Some(node) = deque.pop_front(){
+        results.push(node.as_ref().borrow().val);
+        if let Some(ref left) = node.as_ref().borrow().left {
+            deque.push_back(Rc::clone(left));
+        }
+        if let Some(ref right) = node.as_ref().borrow().right {
+            deque.push_back(Rc::clone(right));
+        }
+    }
+    return results;
+}
+
 #[cfg(test)]
 mod test {
     use super::*;
     use std::cell::Ref;
+    use crate::tree::build_tree::get_tree1;
 
     #[test]
     fn test_rc() {
@@ -190,16 +221,6 @@ mod test {
         if let Some(ref node) = tree {
             stack.push(&node.as_ref().borrow().left);
         }
-    }
-
-    fn get_tree() -> Option<Rc<RefCell<TreeNode>>> {
-        let mut tree = TreeNode::new(10);
-        tree.left = Some(Rc::new(RefCell::new(TreeNode::new(32))));
-        tree.right = Some(Rc::new(RefCell::new(TreeNode::new(11))));
-        if let Some(ref node) = tree.left {
-            node.as_ref().borrow_mut().right = Some(Rc::new(RefCell::new(TreeNode::new(9))));
-        }
-        Some(Rc::new(RefCell::new(tree)))
     }
 
     #[test]
@@ -250,5 +271,12 @@ mod test {
         let b = a.clone();
         let c = Rc::clone(&b);
         assert_eq!(a.as_ref(), b.as_ref());
+    }
+
+    #[test]
+    fn test_layer_wise_traverse() {
+        let root = get_tree();
+        let result = layer_wise_traverse(root);
+        assert_eq!(result, vec![10, 32, 11, 9]);
     }
 }

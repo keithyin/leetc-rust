@@ -4,7 +4,14 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb81de60-269c-4587-9354-51ab89e1a14e" name="Default Changelist" comment="" />
+    <list default="true" id="fb81de60-269c-4587-9354-51ab89e1a14e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/tree/algo_101.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tree/build_tree.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tree.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/tree.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tree/tree_traverse.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/tree/tree_traverse.rs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,9 +40,9 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
   </component>
-  <component name="RunManager" selected="Cargo.Test stack::algo_42::test::test_catch_rain">
-    <configuration name="Test stack::algo_20::test::test_valid_bracket" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package leetc-rust --lib stack::algo_20::test::test_valid_bracket -- --exact" />
+  <component name="RunManager" selected="Cargo.Test tree::tree_traverse::test::test_layer_wise_traverse">
+    <configuration name="Test stack::algo_42::test::test_catch_rain" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package leetc-rust --lib stack::algo_42::test::test_catch_rain -- --exact" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <option name="channel" value="DEFAULT" />
       <option name="requiredFeatures" value="true" />
@@ -49,8 +56,53 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test stack::algo_42::test::test_catch_rain" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package leetc-rust --lib stack::algo_42::test::test_catch_rain -- --exact" />
+    <configuration name="Test tree::algo_100::test::test_is_same_tree" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package leetc-rust --lib tree::algo_100::test::test_is_same_tree -- --exact" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <option name="channel" value="DEFAULT" />
+      <option name="requiredFeatures" value="true" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <envs />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test tree::algo_101::test::test_is_symmetric_tree" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package leetc-rust --lib tree::algo_101::test::test_is_symmetric_tree -- --exact" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <option name="channel" value="DEFAULT" />
+      <option name="requiredFeatures" value="true" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <envs />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test tree::tree_traverse::test::test_layer_wise_traverse" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package leetc-rust --lib tree::tree_traverse::test::test_layer_wise_traverse -- --exact" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <option name="channel" value="DEFAULT" />
+      <option name="requiredFeatures" value="true" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <envs />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test tree_traverse::test" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package leetc-rust --lib tree::tree_traverse::test" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <option name="channel" value="DEFAULT" />
       <option name="requiredFeatures" value="true" />
@@ -81,8 +133,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Cargo.Test tree::tree_traverse::test::test_layer_wise_traverse" />
+        <item itemvalue="Cargo.Test tree_traverse::test" />
+        <item itemvalue="Cargo.Test tree::algo_101::test::test_is_symmetric_tree" />
+        <item itemvalue="Cargo.Test tree::algo_100::test::test_is_same_tree" />
         <item itemvalue="Cargo.Test stack::algo_42::test::test_catch_rain" />
-        <item itemvalue="Cargo.Test stack::algo_20::test::test_valid_bracket" />
       </list>
     </recent_temporary>
   </component>
