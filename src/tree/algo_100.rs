@@ -13,7 +13,6 @@ pub fn is_same_tree(root1: &Option<Rc<RefCell<TreeNode>>>,
         if node1.as_ref().borrow().val == node2.as_ref().borrow().val {
             return is_same_tree(&node1.as_ref().borrow().left, &node2.as_ref().borrow().left)
                 && is_same_tree(&node1.as_ref().borrow().right, &node2.as_ref().borrow().right);
-
         } else {
             return false
         }
