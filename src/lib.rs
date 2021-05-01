@@ -1,6 +1,6 @@
 pub mod stack;
 pub mod tree;
-
+pub mod multi_thread;
 #[cfg(test)]
 mod tests {
     #[test]

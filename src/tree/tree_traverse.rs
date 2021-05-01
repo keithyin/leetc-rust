@@ -205,8 +205,6 @@ pub fn layer_wise_traverse(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32>{
 #[cfg(test)]
 mod test {
     use super::*;
-    use std::cell::Ref;
-    use crate::tree::build_tree::get_tree1;
 
     #[test]
     fn test_rc() {
@@ -269,7 +267,7 @@ mod test {
     fn test_ref_eq() {
         let a = Rc::new(5);
         let b = a.clone();
-        let c = Rc::clone(&b);
+        let _c = Rc::clone(&b);
         assert_eq!(a.as_ref(), b.as_ref());
     }
 

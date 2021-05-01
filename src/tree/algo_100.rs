@@ -1,7 +1,6 @@
 use std::cell::RefCell;
 use crate::tree::tree_traverse::TreeNode;
 use std::rc::Rc;
-use std::borrow::Borrow;
 
 pub fn is_same_tree(root1: &Option<Rc<RefCell<TreeNode>>>,
                     root2: &Option<Rc<RefCell<TreeNode>>>) -> bool {
