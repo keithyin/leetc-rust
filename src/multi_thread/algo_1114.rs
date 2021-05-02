@@ -1,5 +1,5 @@
 use std::sync::{Mutex, mpsc};
-use std::sync::mpsc::{Sender, Receiver};
+use std::sync::mpsc::{Sender, Receiver, SyncSender};
 
 
 pub struct Foo {
@@ -47,23 +47,23 @@ impl Foo {
 
 
 pub struct Foo2 {
-    second_sender: Sender<i32>,
-    second_receiver: Receiver<i32>,
+    second_sender: SyncSender<i32>,
+    second_receiver: Mutex<Receiver<i32>>,
 
-    third_sender: Sender<i32>,
-    third_receiver: Receiver<i32>,
+    third_sender: SyncSender<i32>,
+    third_receiver: Mutex<Receiver<i32>>,
 }
 
 impl Foo2 {
     pub fn new() -> Self {
-        let (second_producer, second_consumer) =  mpsc::channel();
-        let (third_producer, third_consumer) =  mpsc::channel();
+        let (second_producer, second_consumer) =  mpsc::sync_channel(1);
+        let (third_producer, third_consumer) =  mpsc::sync_channel(1);
         Foo2{
             second_sender: second_producer,
-            second_receiver: second_consumer,
+            second_receiver: Mutex::new(second_consumer),
 
             third_sender: third_producer,
-            third_receiver: third_consumer
+            third_receiver: Mutex::new(third_consumer)
         }
     }
 
@@ -73,13 +73,13 @@ impl Foo2 {
     }
 
     pub fn second(& self) {
-        self.second_receiver.recv().unwrap();
+        self.second_receiver.lock().unwrap().recv().unwrap();
         println!("second");
         self.third_sender.send(1).unwrap();
     }
 
     pub fn third(& self) {
-        self.third_receiver.recv().unwrap();
+        self.third_receiver.lock().unwrap().recv().unwrap();
         println!("third")
     }
 }
