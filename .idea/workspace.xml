@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb81de60-269c-4587-9354-51ab89e1a14e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/multi_thread/algo_1116.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/multi_thread/algo_1117.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/multi_thread.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/multi_thread.rs" afterDir="false" />
     </list>
@@ -36,7 +36,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager" selected="Cargo.test">
     <configuration name="Test algo_107::test" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
