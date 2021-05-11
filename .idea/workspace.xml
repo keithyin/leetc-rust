@@ -4,12 +4,11 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb81de60-269c-4587-9354-51ab89e1a14e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/tree/algo_102.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tree/algo_103.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tree/algo_112.rs" afterDir="false" />
+    <list default="true" id="fb81de60-269c-4587-9354-51ab89e1a14e" name="Default Changelist" comment="algo">
+      <change afterPath="$PROJECT_DIR$/src/stack/algo_225.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stack/algo_232.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tree.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/tree.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stack.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/stack.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,18 +44,34 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/tree" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/stack" />
     <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\WorkingHomeOfKeith\leetc-rust\src\stack" />
       <recent name="D:\WorkingHomeOfKeith\leetc-rust\src\tree" />
     </key>
   </component>
-  <component name="RunManager" selected="Cargo.Test tree::algo_103::test::test_level_order">
-    <configuration name="Test stack::algo_150::test::test_compute_value" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package leetc-rust --lib stack::algo_150::test::test_compute_value -- --exact" />
+  <component name="RunManager" selected="Cargo.Test stack::algo_232::test::test_my_queue">
+    <configuration name="Test stack::algo_232::test::test_my_queue" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package leetc-rust --lib stack::algo_232::test::test_my_queue -- --exact" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <option name="channel" value="DEFAULT" />
+      <option name="requiredFeatures" value="true" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <envs />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test stack::algo_255::test::test_mystack" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package leetc-rust --lib stack::algo_255::test::test_mystack -- --exact" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <option name="channel" value="DEFAULT" />
       <option name="requiredFeatures" value="true" />
@@ -87,21 +102,6 @@
     </configuration>
     <configuration name="Test tree::algo_103::test::test_level_order" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="test --package leetc-rust --lib tree::algo_103::test::test_level_order -- --exact" />
-      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
-      <option name="channel" value="DEFAULT" />
-      <option name="requiredFeatures" value="true" />
-      <option name="allFeatures" value="false" />
-      <option name="emulateTerminal" value="false" />
-      <option name="backtrace" value="SHORT" />
-      <envs />
-      <option name="isRedirectInput" value="false" />
-      <option name="redirectInputPath" value="" />
-      <method v="2">
-        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test tree::tree_traverse::test::test_ref_eq" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="test --package leetc-rust --lib tree::tree_traverse::test::test_ref_eq -- --exact" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <option name="channel" value="DEFAULT" />
       <option name="requiredFeatures" value="true" />
@@ -147,11 +147,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Cargo.Test stack::algo_232::test::test_my_queue" />
+        <item itemvalue="Cargo.Test stack::algo_255::test::test_mystack" />
         <item itemvalue="Cargo.Test tree::algo_103::test::test_level_order" />
         <item itemvalue="Cargo.Test tree::algo_102::test::test_level_order" />
         <item itemvalue="Cargo.test" />
-        <item itemvalue="Cargo.Test tree::tree_traverse::test::test_ref_eq" />
-        <item itemvalue="Cargo.Test stack::algo_150::test::test_compute_value" />
       </list>
     </recent_temporary>
   </component>
@@ -168,6 +168,14 @@
       <option name="presentableId" value="Default" />
       <updated>1618398535462</updated>
     </task>
+    <task id="LOCAL-00001" summary="algo">
+      <created>1620660816337</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1620660816337</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -181,5 +189,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="algo" />
+    <option name="LAST_COMMIT_MESSAGE" value="algo" />
   </component>
 </project>
