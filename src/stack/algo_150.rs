@@ -41,6 +41,44 @@ fn compute_value(tokens: Vec<&str>) -> i32 {
     return result;
 }
 
+
+
+pub fn eval_rpn(tokens: Vec<String>) -> i32 {
+    let mut value_stack = vec![];
+    for item in tokens.iter() {
+        match &item[..] {
+            "+" => {
+                if let (Some(second_val), Some(first_val)) = (value_stack.pop(), value_stack.pop()) {
+                    value_stack.push(second_val + first_val);
+                }
+            },
+            "-" => {
+                if let (Some(second_val), Some(first_val)) = (value_stack.pop(), value_stack.pop()) {
+                    value_stack.push(first_val - second_val);
+                }
+            },
+
+            "*" => {
+                if let (Some(second_val), Some(first_val)) = (value_stack.pop(), value_stack.pop()) {
+                    value_stack.push(first_val * second_val);
+                }
+            },
+            "/" => {
+                if let (Some(second_val), Some(first_val)) = (value_stack.pop(), value_stack.pop()) {
+                    value_stack.push(first_val / second_val);
+                }
+            },
+            _ => {
+                let value = i32::from_str(item).unwrap();
+                value_stack.push(value);
+            }
+        }
+    }
+
+    return value_stack[0];
+}
+
+
 #[cfg(test)]
 mod test {
     use super::*;
