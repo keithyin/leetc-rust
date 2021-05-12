@@ -9,6 +9,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/stack.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/stack.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/stack/algo_150.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/stack/algo_150.rs" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/src/multi_thread/algo_1114.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/multi_thread/algo_1114.rs" afterDir="false" />
+>>>>>>> 02efceb (algo)
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +52,7 @@
     <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
+<<<<<<< HEAD
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\WorkingHomeOfKeith\leetc-rust\src\stack" />
@@ -55,8 +60,14 @@
     </key>
   </component>
   <component name="RunManager" selected="Cargo.Test stack::algo_71::test::test_simplify_path">
+<<<<<<< HEAD
     <configuration name="Test stack::algo_232::test::test_my_queue" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="test --package leetc-rust --lib stack::algo_232::test::test_my_queue -- --exact" />
+=======
+ <component name="RunManager" selected="Cargo.Test multi_thread::algo_1114::test::test_ref_mutex">
+    <configuration name="Test algo_107::test" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package leetc-rust --lib tree::algo_107::test" />
+>>>>>>> 02efceb (algo)
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <option name="channel" value="DEFAULT" />
       <option name="requiredFeatures" value="true" />
@@ -70,8 +81,13 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
+<<<<<<< HEAD
     <configuration name="Test stack::algo_255::test::test_mystack" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="test --package leetc-rust --lib stack::algo_255::test::test_mystack -- --exact" />
+=======
+    <configuration name="Test multi_thread::algo_1114::test::test_ref_mutex" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package leetc-rust --lib multi_thread::algo_1114::test::test_ref_mutex -- --exact" />
+>>>>>>> a5b05ea (?)
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <option name="channel" value="DEFAULT" />
       <option name="requiredFeatures" value="true" />
@@ -85,8 +101,18 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
+<<<<<<< HEAD
     <configuration name="Test stack::algo_71::test::test_simplify_path" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="test --package leetc-rust --lib stack::algo_71::test::test_simplify_path -- --exact" />
+=======
+<<<<<<< HEAD
+    <configuration name="Test stack::algo_71::test::test_simplify_path" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package leetc-rust --lib stack::algo_71::test::test_simplify_path -- --exact" />
+=======
+    <configuration name="Test stack::algo_150::test::test_compute_value" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="test --package leetc-rust --lib stack::algo_150::test::test_compute_value -- --exact" />
+>>>>>>> a5b05ea (?)
+>>>>>>> 02efceb (algo)
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
       <option name="channel" value="DEFAULT" />
       <option name="requiredFeatures" value="true" />
@@ -152,6 +178,14 @@
         <item itemvalue="Cargo.Test stack::algo_255::test::test_mystack" />
         <item itemvalue="Cargo.Test tree::algo_103::test::test_level_order" />
         <item itemvalue="Cargo.Test tree::algo_102::test::test_level_order" />
+<<<<<<< HEAD
+=======
+        <item itemvalue="Cargo.Test multi_thread::algo_1114::test::test_ref_mutex" />
+        <item itemvalue="Cargo.test" />
+        <item itemvalue="Cargo.Test tree::tree_traverse::test::test_ref_eq" />
+        <item itemvalue="Cargo.Test stack::algo_150::test::test_compute_value" />
+        <item itemvalue="Cargo.Test algo_107::test" />
+>>>>>>> 02efceb (algo)
       </list>
     </recent_temporary>
   </component>
