@@ -7,3 +7,5 @@ pub mod algo_232;
 pub mod algo_225;
 pub mod algo_71;
 mod monotonic_stack;
+mod algo_121;
+mod algo_122;

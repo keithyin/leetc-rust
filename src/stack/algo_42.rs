@@ -1,4 +1,4 @@
-fn catch_rain_brute_force(heights: &Vec<u32>) -> u32 {
+fn _catch_rain_brute_force(heights: &Vec<u32>) -> u32 {
     let len = heights.len();
     if len < 1 {
         return 0;

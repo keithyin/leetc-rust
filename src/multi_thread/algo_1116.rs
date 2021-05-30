@@ -55,7 +55,7 @@ impl ZeroEvenOdd {
         for _i in 0..(self.n / 2) {
             let val = self.even_receiver.lock().unwrap().recv().unwrap();
             print!("{}", val.to_string());
-            self.zero_sender.send(1);
+            self.zero_sender.send(1).unwrap();
         }
     }
 
@@ -63,7 +63,7 @@ impl ZeroEvenOdd {
         for _i in 0..(self.n - self.n / 2) {
             let val = self.odd_receiver.lock().unwrap().recv().unwrap();
             print!("{}", val.to_string());
-            self.zero_sender.send(1);
+            self.zero_sender.send(1).unwrap();
         }
     }
 }
