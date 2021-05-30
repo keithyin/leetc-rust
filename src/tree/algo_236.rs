@@ -4,7 +4,7 @@ use crate::tree::tree_traverse::TreeNode;
 
 pub fn common_ancestor(root: Option<Rc<RefCell<TreeNode>>>,
                        node1: i32,
-                       node2: i32, result: &mut Option<Rc<RefCell<TreeNode>>>) -> (bool) {
+                       node2: i32, result: &mut Option<Rc<RefCell<TreeNode>>>) -> bool {
     if let Some(node) = root {
         if node.as_ref().borrow().val == node1 || node.as_ref().borrow().val == node2 {
             return true;
@@ -50,7 +50,7 @@ mod test {
         assert!(&rc1 == &rc2);
         assert!(Some(rc1) == Some(rc2));
         let mut a = 0;
-        let mut b = 1;
+        // let mut b = 1;
         let ref_a = &mut a;
         consume_ref(ref_a);
         consume_ref(ref_a);  // TODO: why it works, 可以发现，传&mut的方法，都可以将 &mut返回出来。这样就使得这种方式非常合理了？
