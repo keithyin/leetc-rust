@@ -2,6 +2,8 @@ pub mod stack;
 pub mod tree;
 pub mod multi_thread;
 pub mod queue;
+mod link_list;
+
 #[cfg(test)]
 mod tests {
     #[test]
