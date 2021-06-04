@@ -3,6 +3,7 @@ pub mod tree;
 pub mod multi_thread;
 pub mod queue;
 mod linked_list;
+mod sort_related;
 
 #[cfg(test)]
 mod tests {
