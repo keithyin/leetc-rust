@@ -125,23 +125,23 @@ mod test {
         handle3.join().unwrap();
     }
 
-    #[test]
-    fn test_ref_mutex() {
-        let mutex = Mutex::new(1);
-
-        let ref_mutex = &mutex;
-        let handle1 = thread::spawn(move|| {
-            let mut adder = ref_mutex.lock().unwrap();
-            *adder += 1;
-        });
-        let ref_mutex = &mutex;
-        let handle2 = thread::spawn(move|| {
-            let mut adder = ref_mutex.lock().unwrap();
-            *adder += 1;
-        });
-
-        handle1.join().unwrap();
-        handle2.join().unwrap();
-        println!("{}", mutex.lock().unwrap());
-    }
+    // #[test]
+    // fn test_ref_mutex() {
+    //     let mutex = Mutex::new(1);
+    //
+    //     let ref_mutex = &mutex;
+    //     let handle1 = thread::spawn(move|| {
+    //         let mut adder = ref_mutex.lock().unwrap();
+    //         *adder += 1;
+    //     });
+    //     let ref_mutex = &mutex;
+    //     let handle2 = thread::spawn(move|| {
+    //         let mut adder = ref_mutex.lock().unwrap();
+    //         *adder += 1;
+    //     });
+    //
+    //     handle1.join().unwrap();
+    //     handle2.join().unwrap();
+    //     println!("{}", mutex.lock().unwrap());
+    // }
 }
