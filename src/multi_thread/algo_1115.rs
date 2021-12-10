@@ -34,7 +34,7 @@ impl FooBar {
     }
 
     pub fn bar(&self, n: i32) {
-        for i in 0..n{
+        for _i in 0..n{
             if self.bar_receiver.lock().unwrap().recv().unwrap() > 0 {
                 print!("bar");
                 self.foo_sender.send(1).unwrap();
@@ -45,7 +45,7 @@ impl FooBar {
 
 #[cfg(test)]
 mod test {
-    use std::sync::{mpsc, Arc};
+    use std::sync::{Arc};
     use crate::multi_thread::algo_1115::FooBar;
     use std::thread;
 

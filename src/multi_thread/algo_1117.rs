@@ -52,7 +52,7 @@ impl H2O {
                 hydrogen_counter -= 1;
             } else {
                 self.oxygen_sender.send(hydrogen_counter).unwrap();
-                let remain_oxygen = self.hydrogen_receiver.lock().unwrap().recv().unwrap();
+                let _remain_oxygen = self.hydrogen_receiver.lock().unwrap().recv().unwrap();
                 output_hydrogen_counter = 0;
                 if hydrogen_counter == 0 {
                     break;
@@ -64,10 +64,10 @@ impl H2O {
     pub fn oxygen(&self) {
         let mut oxygen_counter = self.oxygen_counter;
         while oxygen_counter > 0 {
-            let remain_hydrogen = self.oxygen_receiver.lock().unwrap().recv().unwrap();
+            let _remain_hydrogen = self.oxygen_receiver.lock().unwrap().recv().unwrap();
             println!("O");
             oxygen_counter -= 1;
-            self.hydrogen_sender.send(oxygen_counter);
+            self.hydrogen_sender.send(oxygen_counter).unwrap();
         }
     }
 }
