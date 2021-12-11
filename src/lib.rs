@@ -1,8 +1,9 @@
 pub mod stack;
 pub mod tree;
 pub mod multi_thread;
-pub mod queue;
+pub mod offer;
 mod linked_list;
+mod queue;
 mod sort_related;
 mod other;
 mod dynamic_programming;
