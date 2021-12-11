@@ -88,7 +88,16 @@ mod test {
         if let Some(res) = res {
             res.print();
         }
+    }
 
+    #[test]
+    fn test_box() {
+        let mut val = Box::new(10);
+        let mut_val = val.as_mut();
+        *mut_val = 10;
+        *val = 100;
+
+        println!("{}", val);
     }
 
 }

@@ -4,6 +4,8 @@ pub mod multi_thread;
 pub mod queue;
 mod linked_list;
 mod sort_related;
+mod other;
+mod dynamic_programming;
 
 #[cfg(test)]
 mod tests {
