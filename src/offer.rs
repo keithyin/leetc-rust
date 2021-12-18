@@ -2,6 +2,8 @@ pub mod min_stack;
 mod min_array;
 mod word_search;
 mod moving_count;
+mod reverse_print;
+mod reverse_list;
 
 
 pub mod algo {
