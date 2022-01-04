@@ -5,21 +5,31 @@ pub fn search(nums: Vec<i32>, target: i32) -> i32 {
     let mut high = nums.len();
 
     while low < high {
+        println!("low:{}, high:{}", low, high);
         let mid = (low + high) / 2;
         if nums[mid] == target {
             return mid as i32;
-        }else if  target > nums[mid] {
-            if nums[mid] > nums[low] {
-                high = mid;
-            } else {
-                low = mid + 1;
-            }
-        } else {  // nums[mid] < target
-            if target <= nums[high-1] {
+        }else if nums[high-1] >= nums[low] {
+            if target > nums[mid] {
                 low = mid + 1;
             } else {
-                high = mid;
+                high = mid
             }
+        } else if nums[high-1] < nums[low] {  // nums[mid] < target
+            if nums[mid] < nums[low] {
+                if target > nums[mid] && target < nums[low] {
+                    low = mid+1;
+                } else {
+                    high = mid;
+                }
+            } else {
+                if target > nums[mid] || target < nums[low] {
+                    low = mid + 1;
+                } else {
+                    high = mid;
+                }
+            }
+
         }
     }
     return -1;
