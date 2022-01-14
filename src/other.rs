@@ -10,3 +10,4 @@ mod algo_55;
 mod algo_543;
 mod algo_739;
 mod algo_581;
+mod algo_322;
