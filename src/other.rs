@@ -12,3 +12,6 @@ mod algo_739;
 mod algo_581;
 mod algo_322;
 mod algo_337;
+mod algo_36;
+mod algo_38;
+mod algo_41;
