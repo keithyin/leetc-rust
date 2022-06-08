@@ -7,6 +7,8 @@ mod queue;
 mod sort_related;
 mod other;
 mod dynamic_programming;
+mod bop;
+mod lc;
 
 #[cfg(test)]
 mod tests {

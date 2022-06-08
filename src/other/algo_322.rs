@@ -1,4 +1,3 @@
-use std::i8::MIN;
 
 fn coin_change(coins: Vec<i32>, amount: i32) -> (i32, Vec<Vec<i32>>){
     let MIN_VAL = 9999999;
@@ -43,7 +42,7 @@ mod test {
     use crate::other::algo_322::coin_change;
 
     #[test]
-    fn testCoinChange() {
+    fn test_coin_change() {
         println!("{:?}", coin_change(vec![1, 2, 3], 5));
     }
 }

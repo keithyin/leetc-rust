@@ -2,7 +2,6 @@ use std::rc::Rc;
 use std::cell::{RefCell, Ref};
 use std::fmt::{Display, Formatter};
 use std::option::Option::Some;
-use std::borrow::Borrow;
 
 #[derive(Debug)]
 pub struct LinkedListNode {
@@ -176,7 +175,6 @@ mod test {
     use crate::linked_list::algo_23::{Heap, LinkedListNode, build_linked_list, merge_k_ordered_linked_list};
     use std::rc::Rc;
     use std::cell::RefCell;
-    use std::borrow::Borrow;
 
     #[test]
     fn test_swap() {
