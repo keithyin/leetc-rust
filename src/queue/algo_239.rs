@@ -1,4 +1,4 @@
-use std::collections::VecDeque;
+use std::collections::vec_deque::VecDeque;
 
 struct MonotonicQueue<'a> {
     ori_value: &'a Vec<i32>,
