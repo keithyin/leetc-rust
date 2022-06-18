@@ -9,9 +9,9 @@ pub fn num_squares(n: i32) -> i32 {
             minn = min(minn, 1 + dp[(i - j * j) as usize]);
             j += 1;
         }
-        dp[i] = minn;
+        dp[i as usize] = minn;
     }
 
-    dp[n]
+    dp[n as usize]
 
 }

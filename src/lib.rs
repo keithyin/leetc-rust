@@ -1,3 +1,5 @@
+extern crate core;
+
 pub mod stack;
 pub mod tree;
 pub mod multi_thread;
