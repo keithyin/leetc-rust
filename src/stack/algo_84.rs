@@ -16,7 +16,7 @@ pub fn largest_rectangle_area(heights: Vec<i32>) -> i32 {
         while left_cursor < length && cur_height <= heights[left_cursor as usize] {
             left_cursor += 1;
         }
-        let span = (left_cursor - right_cursor - 1) ;
+        let span = left_cursor - right_cursor - 1;
         max_area = if max_area < (span * cur_height) {
             span * cur_height
         } else {

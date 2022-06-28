@@ -40,7 +40,7 @@ fn catch_rain_brute_force(heights: &Vec<i32>) -> i32 {
         } else {
             right_max[cursor as usize]
         };
-        capacity += (bottleneck - heights[cursor as usize]);
+        capacity += bottleneck - heights[cursor as usize];
         cursor += 1;
     }
 
