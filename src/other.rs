@@ -8,3 +8,4 @@ mod algo_46;
 mod algo_53;
 mod algo_55;
 mod algo_543;
+mod lifetime_tag;
