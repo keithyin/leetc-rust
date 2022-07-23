@@ -76,3 +76,4 @@ mod algo_123;
 mod algo_132;
 mod algo_174;
 mod algo_213;
+mod algo_547;
