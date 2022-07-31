@@ -6,33 +6,53 @@ pub fn multiply(num1: String, num2: String) -> String {
     let num2 = num2.as_str().as_bytes();
     let num1_len = num1.len() as i32;
     let num2_len = num2.len() as i32;
-    let mut value_strings = vec![];
+    let mut values = vec![];
     let mut string_max_len = 0;
     for i in (0..num1_len as usize).rev() {
         let num1_cur = (num1[i] - zero) as i32;
         let mut carry = 0;
-        let mut level1_res: Vec<String> = vec![0; num1_len as usize -i-1].iter().map(|x| x.to_string()).collect();
-        let mut level1_res = level1_res.join("");
+        let mut level1_res = vec![0; num1_len as usize -i-1];
         for j in (0..num2_len as usize).rev() {
             let num2_cur = (num2[j] - zero) as i32;
             let mut level2_res = num1_cur * num2_cur + carry;
             carry = level2_res / 10;
             level2_res = level2_res % 10;
-            level1_res.push_str(level2_res.to_string().as_str());
+            level1_res.push(level2_res);
         }
         if carry > 0 {
-            level1_res.push_str(carry.to_string().as_str());
+            level1_res.push(carry);
         }
         string_max_len = max(string_max_len, level1_res.len());
-        value_strings.push(level1_res);
+        values.push(level1_res);
     }
 
+    let mut carry = 0;
+    let mut result = vec![];
     for pos in 0..string_max_len {
-        for value_str in value_strings.iter() {
-
+        let mut cur_res = 0;
+        for single_values in values.iter() {
+            cur_res += (if pos < single_values.len() {single_values[pos]} else {0});
         }
+
+
+        cur_res += carry;
+        carry = cur_res / 10;
+        cur_res = cur_res % 10;
+        result.push(cur_res);
+    }
+    if carry > 0 {
+        result.push(carry);
     }
 
+
+    let result: Vec<String> = result.iter().rev().map(|x| x.to_string()).collect();
+
+    let result = result.join("");
+    return if result.starts_with("0") {
+        "0".to_string()
+    } else {
+        result
+    };
 
 }
 
@@ -42,6 +62,6 @@ mod test {
 
     #[test]
     pub fn test_multiply() {
-        println!("{}", multiply("4".to_string(), "25".to_string()));
+        println!("{}", multiply("44".to_string(), "0".to_string()));
     }
 }
