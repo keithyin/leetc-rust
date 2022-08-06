@@ -85,3 +85,6 @@ mod algo_35;
 mod algo_43;
 mod algo_36;
 mod algo_37;
+mod algo_40;
+mod algo_47;
+mod algo_51;

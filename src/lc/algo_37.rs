@@ -7,8 +7,50 @@ pub fn compute_block_idx(row: usize, col: usize) -> usize {
     block_row * 3 + block_col
 }
 
-pub fn solve_sudoku_core(board: &mut Vec<Vec<char>>, row_exist: &mut Vec<HashSet<char>>, col_exist: &mut Vec<HashSet<char>>,
-    block_exist: Vec<HashSet<char>>, row: usize, col: usize) {
+pub fn compute_row_and_col(idx: usize) -> (usize, usize) {
+    (idx / 9, idx % 9)
+}
+
+pub fn row_and_col_2_idx(row: usize, col: usize) -> usize {
+    row * 9 + col
+}
+
+pub fn solve_sudoku_core(board: &mut Vec<Vec<char>>,
+    row_exist: &mut Vec<HashSet<char>>,
+    col_exist: &mut Vec<HashSet<char>>,
+    block_exist: &mut Vec<HashSet<char>>, idx: usize) -> bool{
+
+    if idx == 81 {
+        return true;
+    }
+
+    let (row, col) = compute_row_and_col(idx);
+    let block_idx = compute_block_idx(row, col);
+    let cur_c = board[row][col];
+    if cur_c == '.' {
+
+        for c in ['1', '2', '3', '4', '5', '6', '7', '8', '9'] {
+            if !row_exist[row].contains(&c) && !col_exist[col].contains(&c) && !block_exist[block_idx].contains(&c) {
+                row_exist[row].insert(c);
+                col_exist[col].insert(c);
+                block_exist[block_idx].insert(c);
+                board[row][col] = c;
+                let found = solve_sudoku_core(board, row_exist, col_exist, block_exist, idx+1);
+                if found {
+                    return true;
+                }
+
+                board[row][col] = '.';
+                row_exist[row].remove(&c);
+                col_exist[col].remove(&c);
+                block_exist[block_idx].remove(&c);
+            }
+        }
+    } else {
+        return solve_sudoku_core(board, row_exist, col_exist, block_exist, idx + 1);
+    }
+
+    false
 
 }
 
@@ -25,19 +67,10 @@ pub fn solve_sudoku(board: &mut Vec<Vec<char>>) {
             if cur_char == '.' {
                 continue;
             }
-            if row_exist[row].contains(&cur_char) {
-                return false;
-            }
-            if col_exist[col].contains(&cur_char) {
-                return false;
-            }
-
             let block_row = row / 3;
             let block_col = col / 3;
             let block_idx = block_row * 3 + block_col;
-            if block_exist[block_idx].contains(&cur_char) {
-                return false;
-            }
+
 
             row_exist[row].insert(cur_char);
             col_exist[col].insert(cur_char);
@@ -46,6 +79,6 @@ pub fn solve_sudoku(board: &mut Vec<Vec<char>>) {
         }
     }
 
-    true
+    solve_sudoku_core(board, &mut row_exist, &mut col_exist, &mut block_exist, 0);
 
 }
