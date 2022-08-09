@@ -46,9 +46,9 @@ pub fn fmt_result(result: &Vec<HashSet<(usize, usize)>>, queens: usize) -> Vec<V
 }
 
 pub fn solve_n_queues_core(cur_row: usize, occupied_point: &mut HashSet<(usize, usize)>,
-                           occupied_col: &mut HashSet<usize>, queens: usize, result: &mut Vec<HashSet<(usize, usize)>>) {
+                           occupied_col: &mut HashSet<usize>, queens: usize, result: &mut usize) {
     if cur_row == queens {
-        result.push(occupied_point.clone());
+        *result += 1;
         return;
     }
 
@@ -70,13 +70,12 @@ pub fn solve_n_queues_core(cur_row: usize, occupied_point: &mut HashSet<(usize, 
 
 }
 
-pub fn solve_n_queens(n: i32) -> Vec<Vec<String>> {
+pub fn total_n_queens(n: i32) -> i32{
     let mut occupied_point = HashSet::new();
     let mut occupied_col = HashSet::new();
-    let mut result = Vec::new();
+    let mut result =0;
     solve_n_queues_core(0, &mut occupied_point, &mut occupied_col, n as usize, &mut result);
-    fmt_result(&result, n as usize)
-
+    result as i32
 }
 
 #[cfg(test)]

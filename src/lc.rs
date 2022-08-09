@@ -88,3 +88,7 @@ mod algo_37;
 mod algo_40;
 mod algo_47;
 mod algo_51;
+mod algo_52;
+mod algo_57;
+mod algo_58;
+mod algo_60;
