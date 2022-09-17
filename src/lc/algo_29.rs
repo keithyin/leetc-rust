@@ -57,7 +57,7 @@ mod test {
     }
 
     #[test]
-    pub fn testDivide() {
+    pub fn test_divide() {
         println!("{}", divide(-1010369383, -2147483648));
     }
 }
