@@ -115,3 +115,6 @@ mod algo_110;
 mod algo_111;
 mod algo_137;
 mod algo_144;
+mod algo_199;
+mod algo_167;
+mod algo_168;
