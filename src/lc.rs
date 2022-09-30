@@ -118,3 +118,8 @@ mod algo_144;
 mod algo_199;
 mod algo_167;
 mod algo_168;
+mod algo_165;
+mod algo_173;
+mod algo_187;
+mod algo_147;
+mod algo_143;

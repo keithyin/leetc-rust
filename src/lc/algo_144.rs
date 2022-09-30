@@ -3,38 +3,35 @@ use std::collections::LinkedList;
 use std::rc::Rc;
 use crate::lc::algo_297::TreeNode;
 
-pub fn preorder_traversal_core(root: &Option<Rc<RefCell<TreeNode>>>, result: &mut Vec<i32>) {
-    if root.is_none() {
-        return;
-    }
-    result.push(root.as_ref().unwrap().borrow().val);
-    preorder_traversal_core(&root.as_ref().unwrap().borrow().left, result);
-    preorder_traversal_core(&root.as_ref().unwrap().borrow().right, result);
-}
-
-pub fn preorder_traversal_stack(root: &Option<Rc<RefCell<TreeNode>>>) -> Vec<i32>{
-    if root.is_none() {
+pub fn preorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
+    let mut stack = LinkedList::new();
+    if let Some(ref node) = root {
+        stack.push_back(Rc::clone(node));
+    } else {
         return vec![];
     }
-    let mut stack = LinkedList::new();
-    let mut result = vec![];
-    result.push(root.as_ref().unwrap().borrow().val);
-    stack.push_back(root.as_ref().unwrap());
 
-    while !stack.is_empty() {
-        let mut next = &stack.back().unwrap().borrow().left;
-        if next.is_none() {
-            let right_node = &stack.pop_back().unwrap().borrow().right;
-            result.push(right_node.as_ref().unwrap().borrow().val);
-            stack.push_back(right_node.as_ref().unwrap());
-        } else {
-            result.push(next.as_ref().unwrap().borrow().val);
-            stack.push_back(next.as_ref().unwrap());
+    let mut result = vec![];
+    while stack.len() > 0 {
+        let cur_node = stack.pop_back().unwrap();
+        result.push(cur_node.as_ref().borrow().val);
+
+        if let Some(right_node) = cur_node.as_ref().borrow().right.as_ref() {
+            stack.push_back(Rc::clone(right_node));
         }
+        if let Some(left_node) = cur_node.as_ref().borrow().left.as_ref() {
+            stack.push_back(Rc::clone(left_node));
+        };
     }
+
     result
 }
 
-pub fn preorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
-    preorder_traversal_stack(&root)
+#[cfg(test)]
+mod test {
+
+    #[test]
+    pub fn test() {
+
+    }
 }

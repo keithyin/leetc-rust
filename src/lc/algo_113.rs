@@ -8,15 +8,15 @@ pub fn path_sum_core(root: &Option<Rc<RefCell<TreeNode>>>, mut residual: i32, tr
         return;
     }
 
-    residual = residual - root.as_ref().unwrap().borrow().val;
-    tracer.push(root.as_ref().unwrap().borrow().val);
-    if residual == 0 && root.as_ref().unwrap().borrow().left.is_none() && root.as_ref().unwrap().borrow().right.is_none() {
+    residual = residual - root.as_ref().unwrap().as_ref().borrow().val;
+    tracer.push(root.as_ref().unwrap().as_ref().borrow().val);
+    if residual == 0 && root.as_ref().unwrap().as_ref().borrow().left.is_none() && root.as_ref().unwrap().as_ref().borrow().right.is_none() {
         result.push(tracer.clone());
         return;
     }
 
-    path_sum_core(&root.as_ref().unwrap().borrow().left, residual, tracer, result);
-    path_sum_core(&root.as_ref().unwrap().borrow().right, residual, tracer, result);
+    path_sum_core(&root.as_ref().unwrap().as_ref().borrow().left, residual, tracer, result);
+    path_sum_core(&root.as_ref().unwrap().as_ref().borrow().right, residual, tracer, result);
 
     tracer.pop();
 }
