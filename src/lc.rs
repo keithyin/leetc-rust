@@ -8,7 +8,7 @@ mod algo_347;
 mod algo_341;
 mod algo_334;
 mod algo_329;
-mod algo_328;
+pub(crate) mod algo_328;
 mod algo_326;
 mod algo_324;
 mod algo_297;

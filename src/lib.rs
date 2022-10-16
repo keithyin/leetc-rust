@@ -11,6 +11,8 @@ mod other;
 mod dynamic_programming;
 mod bop;
 mod lc;
+mod cracking_the_code_interview;
+mod lc_round_2;
 
 #[cfg(test)]
 mod tests {
